@@ -50,13 +50,13 @@ $this->title = 'Login';
                 $form->field($model, 'username', [
                         'inputOptions' => [
                                 'class'=> 'form-control-user form-control',
-                                'placeholder' => '123'
+                                'placeholder' => 'Enter your login'
                             ]])->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'password', [
                         'inputOptions' => [
                                 'class'=> 'form-control-user form-control',
-                                'placeholder' => '123'
+                                'placeholder' => 'Enter your password'
                             ]])->passwordInput() ?>
 
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
