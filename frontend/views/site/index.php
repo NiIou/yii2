@@ -9,7 +9,7 @@ $this->title = 'My Yii Application';
         <div class="container-fluid py-5 text-center">
             <h1 class="display-4">Hi there!</h1>
             <p class="fs-5 fw-light"></p>
-            <p><a class="btn btn-lg btn-success" href="https://yii2.local/yii2/frontend/web/news">News list</a></p>
+            <p><a class="btn btn-lg btn-success" href="https://yii2.local/news">News list</a></p>
         </div>
     </div>
 
