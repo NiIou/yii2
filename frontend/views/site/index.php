@@ -49,7 +49,7 @@ $this->title = 'My Yii Application';
         </div>
         <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->username === 'admin'): ?>
             <div style="text-align:center; margin-top:20px;">
-                <?= \yii\helpers\Html::a('Перейти в админку', 'https://yii2.local/yii2/backend/web/', [
+                <?= \yii\helpers\Html::a('Перейти в админку', 'https://admin.yii2.local/', [
                     'class' => 'btn btn-lg btn-success',
                     'target' => '_blank',
                 ]) ?>
