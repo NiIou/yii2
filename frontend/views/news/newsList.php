@@ -83,7 +83,7 @@
     <?php endforeach; ?>
 </div>
 <div style="text-align:center; margin-top:20px;">
-    <?= \yii\helpers\Html::a('Вернуться на сайт', 'https://yii2.local/yii2/frontend/web/', [
+    <?= \yii\helpers\Html::a('Вернуться на сайт', 'https://yii2.local/', [
         'class' => 'btn btn-lg btn-success',
         'target' => '_self',
     ]) ?>

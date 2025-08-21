@@ -4,59 +4,115 @@
 
 $this->title = 'My Yii Application';
 ?>
+<style>
+    body {
+        background-color: #2e0854; /* тёмно-фиолетовый фон */
+        color: #f5f5f5;
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1, h2 {
+        color: #e6e6fa; /* светло-фиолетовый */
+    }
+
+    p {
+        color: #ddd;
+        line-height: 1.6;
+    }
+
+    .content-box p {
+        text-align: justify;
+    }
+
+    .btn-purple {
+        background-color: #8a2be2;
+        border-color: #8a2be2;
+        color: #fff;
+    }
+
+    .btn-purple:hover {
+        background-color: #6a1bbf;
+        border-color: #6a1bbf;
+        color: #fff;
+    }
+
+    .btn-outline-purple {
+        color: #e6e6fa;
+        border: 2px solid #e6e6fa;
+        background-color: transparent;
+    }
+
+    .btn-outline-purple:hover {
+        background-color: #e6e6fa;
+        color: #2e0854;
+    }
+
+    .content-box {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.05); /* полупрозрачный фон */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        text-align: justify;
+    }
+
+    .content-box h2 {
+        text-align: center;
+    }
+
+    .admin-btn {
+        margin-top: 20px;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+</style>
+
 <div class="site-index">
     <div class="p-5 mb-4 bg-transparent rounded-3">
         <div class="container-fluid py-5 text-center">
             <h1 class="display-4">Hi there!</h1>
-            <p class="fs-5 fw-light"></p>
-            <p><a class="btn btn-lg btn-success" href="https://yii2.local/news">News list</a></p>
+            <p class="text-center">
+                <a class="btn btn-lg btn-purple" href="https://yii2.local/news">News list</a>
+            </p>
         </div>
     </div>
 
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-        <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->username === 'admin'): ?>
-            <div style="text-align:center; margin-top:20px;">
-                <?= \yii\helpers\Html::a('Перейти в админку', 'https://admin.yii2.local/', [
-                    'class' => 'btn btn-lg btn-success',
-                    'target' => '_blank',
-                ]) ?>
-            </div>
-        <?php endif; ?>
-
-
-
+    <div class="body-content content-box">
+        <h2>Lorem ipsum</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in condimentum ex. Mauris tristique dignissim magna at venenatis. Aliquam non eros vel dui dapibus malesuada. Curabitur pretium odio diam, et dictum sapien luctus vel. Nulla sollicitudin vulputate molestie. Curabitur mollis, nisi sit amet lobortis vestibulum, odio magna suscipit purus, at auctor lectus est a risus. Aenean bibendum orci non rhoncus commodo. Nunc eu lacus erat. Quisque hendrerit velit sodales arcu facilisis porttitor a id dolor. In pellentesque dolor ac tortor consequat malesuada. Phasellus nec volutpat sem. Nulla vel vestibulum nisi. Maecenas laoreet felis eu justo malesuada vehicula. In hac habitasse platea dictumst. Maecenas condimentum porta dui in hendrerit. Ut sit amet metus a ligula volutpat lacinia non eu nunc. Donec consequat libero a risus ullamcorper, nec fermentum sem sagittis. Nulla at purus posuere, venenatis felis id, tristique velit. Aliquam pretium quam sed magna aliquet tincidunt. Sed sed blandit purus, sit amet congue orci.
+        </p>
+        <p class="text-center">
+            <a class="btn btn-outline-purple" href="https://ru.lipsum.com/feed/html">&raquo; Learn more &raquo;</a>
+        </p>
     </div>
+
+    <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->username === 'admin'): ?>
+        <div class="admin-btn">
+            <?= \yii\helpers\Html::a('Перейти в админку', 'https://admin.yii2.local/', [
+                'class' => 'btn btn-lg btn-purple',
+                'target' => '_blank',
+            ]) ?>
+        </div>
+    <?php endif; ?>
 </div>
