@@ -9,6 +9,7 @@
             background: #f0f2f5;
             padding: 2rem;
             margin: 0;
+            transition: background 0.3s ease;
         }
 
         .news-container {
@@ -20,30 +21,12 @@
         }
 
         .card {
-            background: #fff;
             border-radius: 12px;
             padding: 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: #fff;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .time {
@@ -55,40 +38,91 @@
         .title {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #333;
             margin-bottom: 0.8rem;
         }
 
         .content {
             font-size: 1rem;
             line-height: 1.6;
-            color: #555;
         }
+
+        /* Тёмная тема */
+        body.dark {
+            background: #2e0854;
+        }
+        body.dark .card {
+            background: #8A2BE2FF;
+            color: #fff;
+        }
+        body.dark .time {
+            color: #ddd;
+        }
+        body.dark .title {
+            color: #fff;
+        }
+        body.dark .content {
+            color: #f0f0f0;
+        }
+
+        /* Кнопка переключения темы */
+        .theme-toggle {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #8A2BE2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        /* Ссылки в светлой теме */
+        a {
+            color: #8A2BE2; /* фиолетовый */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ссылки в тёмной теме */
+        body.dark a {
+            color: #ecebeb; /* золотой (на фиолетовом фоне лучше видно) */
+        }
+        body.dark a:hover {
+            text-decoration: underline;
+        }
+
+
     </style>
+
+
 </head>
 <body>
 
 <div class="news-container">
     <?php
     use yii\helpers\Url;
-    foreach ($news as $item):
-        ?>
+    foreach ($news as $item): ?>
         <div class="card">
             <div class="time">🕒 <?= htmlspecialchars($item['time']) ?></div>
-
-            <div class="title"><a href="<?php echo Url::to(["news/view" , 'id' => $item["id"]]) ?>"><?= $item['title'] ?></a></div>
-
+            <div class="title">
+                <a href="<?php echo Url::to(["news/view" , 'id' => $item["id"]]) ?>">
+                    <?= $item['title'] ?>
+                </a>
+            </div>
             <div class="content"><?= nl2br(htmlspecialchars($item['content'])) ?></div>
         </div>
     <?php endforeach; ?>
 </div>
+
 <div style="text-align:center; margin-top:20px;">
     <?= \yii\helpers\Html::a('Вернуться на сайт', 'https://yii2.local/', [
-        'class' => 'btn btn-lg btn-success',
+        'class' => 'btn btn-lg',
+        'style' => 'background-color:#8A2BE2; color:#fff; border:none;',
         'target' => '_self',
     ]) ?>
 </div>
-
 
 </body>
 </html>

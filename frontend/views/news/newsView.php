@@ -9,8 +9,10 @@
             background: #f4f5f7;
             margin: 0;
             padding: 2rem;
+            transition: background 0.3s, color 0.3s;
         }
 
+        /* Карточка новости — светлая тема */
         .news-single {
             max-width: 800px;
             margin: auto;
@@ -21,6 +23,14 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.6s ease-out forwards;
+            transition: background 0.3s, color 0.3s;
+            color: #333;
+        }
+
+        /* Карточка новости — тёмная тема */
+        body.dark .news-single {
+            background: #8A2BE2; /* лавандовый */
+            color: #fff;
         }
 
         @keyframes fadeInUp {
@@ -36,6 +46,10 @@
             margin-bottom: 0.7rem;
         }
 
+        body.dark .news-time {
+            color: #ddd;
+        }
+
         .news-title {
             font-size: 1.6rem;
             font-weight: 600;
@@ -43,12 +57,21 @@
             color: #222;
         }
 
+        body.dark .news-title {
+            color: #fff;
+        }
+
         .news-content {
             font-size: 1.05rem;
             line-height: 1.7;
             color: #444;
         }
+
+        body.dark .news-content {
+            color: #f2f2f2;
+        }
     </style>
+
 </head>
 <body>
 

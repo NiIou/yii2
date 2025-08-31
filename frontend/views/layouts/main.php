@@ -21,6 +21,34 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
+    <style>
+        /* Светлая тема по умолчанию */
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            background-color: #2e0854; /* тёмно-фиолетовый фон */
+            color: #f5f5f5;
+        }
+
+        .theme-toggle-btn {
+            border: 1px solid #ccc;
+            background: transparent;
+            color: inherit;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
@@ -47,10 +75,20 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
     ]);
+
+    // Кнопка переключения темы 🌙/☀️
+    echo Html::button('🌙/☀️', [
+        'id' => 'theme-toggle-btn',
+        'class' => 'theme-toggle-btn ms-2'
+    ]);
+
     if (Yii::$app->user->isGuest) {
-        echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+        echo Html::tag('div',
+            Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),
+            ['class' => ['d-flex']]
+        );
     } else {
-        echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
+        echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex ms-2'])
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout text-decoration-none']
@@ -71,14 +109,36 @@ AppAsset::register($this);
     </div>
 </main>
 
-<!--<footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-start">&copy; <?php /*= Html::encode(Yii::$app->name) */?> <?php /*= date('Y') */?></p>
-        <p class="float-end"><?php /*= Yii::powered() */?></p>
-    </div>
-</footer>-->
+<?php
+$script = <<<JS
+function setTheme(theme) {
+    document.body.classList.toggle('dark', theme === 'dark');
+    document.cookie = "theme=" + theme + "; path=/; max-age=" + (60*60*24*365);
+}
+
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\\.\$?*|{}()\\[\\]\\\\\\/\\+^])/g, '\\\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+// применяем сохранённую тему при загрузке
+let savedTheme = getCookie('theme');
+if (savedTheme) {
+    setTheme(savedTheme);
+}
+
+document.getElementById('theme-toggle-btn').addEventListener('click', function() {
+    let current = document.body.classList.contains('dark') ? 'dark' : 'light';
+    let newTheme = current === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+});
+JS;
+$this->registerJs($script);
+?>
 
 <?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage();
+<?php $this->endPage(); ?>

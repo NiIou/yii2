@@ -5,37 +5,26 @@
 $this->title = 'My Yii Application';
 ?>
 <style>
+    /* Светлая тема (по умолчанию) */
     body {
-        background-color: #2e0854; /* тёмно-фиолетовый фон */
-        color: #f5f5f5;
+        background-color: #f5f5f5;
+        color: #222;
         font-family: "Segoe UI", Arial, sans-serif;
         margin: 0;
         padding: 0;
     }
 
-    .site-index {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        text-align: center;
-        padding: 20px;
+    body.dark {
+        background-color: #2e0854; /* тёмно-фиолетовый фон */
+        color: #f5f5f5;
     }
 
+    /* Заголовки */
     h1, h2 {
-        color: #e6e6fa; /* светло-фиолетовый */
+        color: inherit;
     }
 
-    p {
-        color: #ddd;
-        line-height: 1.6;
-    }
-
-    .content-box p {
-        text-align: justify;
-    }
-
+    /* Кнопки */
     .btn-purple {
         background-color: #8a2be2;
         border-color: #8a2be2;
@@ -49,42 +38,37 @@ $this->title = 'My Yii Application';
     }
 
     .btn-outline-purple {
-        color: #e6e6fa;
-        border: 2px solid #e6e6fa;
+        color: inherit;
+        border: 2px solid currentColor;
         background-color: transparent;
     }
 
     .btn-outline-purple:hover {
-        background-color: #e6e6fa;
-        color: #2e0854;
+        background-color: currentColor;
+        color: #fff;
     }
 
+    .admin-btn {
+        display: flex;
+        justify-content: center; /* горизонтальный центр */
+        margin-top: 20px;
+    }
+
+
+    /* Блоки */
     .content-box {
         max-width: 800px;
         margin: 20px auto;
         padding: 30px;
-        background-color: rgba(255, 255, 255, 0.05); /* полупрозрачный фон */
+        background-color: rgba(255, 255, 255, 0.8);
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         text-align: justify;
     }
-
-    .content-box h2 {
-        text-align: center;
+    body.dark .content-box {
+        background-color: rgba(255, 255, 255, 0.05);
     }
 
-    .admin-btn {
-        margin-top: 20px;
-    }
-
-    .display-4 {
-        font-size: 2.5rem;
-        font-weight: 600;
-    }
-
-    .text-center {
-        text-align: center !important;
-    }
 </style>
 
 <div class="site-index">
