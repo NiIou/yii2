@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
 
@@ -14,13 +15,28 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->widget(CKEditor::className(), [
+            'options' => ['rows' => 6],
+            'preset' => 'basic'
+    ])?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'image', [
+            'template' =>
+                '<div class="input-group mb-3">
+                    <div class="custom-file">
+                        {input}
+                        {label}
+                  </div>
+                </div>',
+            'labelOptions' => ['class' => "custom-file-label"],
+            'inputOptions' => ['class' => 'custom-file-input']
+    ])->fileInput() ?>
+
+    <?= $form->field($model, 'price')->textInput(['maxlength' => true, 'type' => 'number']) ?>
+
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
