@@ -39,9 +39,9 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'price', 'created_at', 'updated_at', 'image'], 'required'],
             [['description', 'image', 'created_by', 'updated_by'], 'default', 'value' => null],
             [['status'], 'default', 'value' => 1],
-            [['name', 'price', 'created_at', 'updated_at'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],

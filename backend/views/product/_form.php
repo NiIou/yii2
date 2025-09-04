@@ -24,10 +24,11 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'image', [
             'template' =>
-                '<div class="input-group mb-3">
+                '
                     <div class="custom-file">
                         {input}
                         {label}
+                        {error}
                   </div>
                 </div>',
             'labelOptions' => ['class' => "custom-file-label"],

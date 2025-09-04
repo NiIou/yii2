@@ -75,6 +75,12 @@ AppAsset::register($this);
                 <span>Product Categories</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="https://admin.yii2.local/product/create">
+                <i class=""></i>
+                <span>Create product</span></a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
