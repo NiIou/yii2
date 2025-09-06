@@ -22,7 +22,7 @@ use yii\bootstrap5\ActiveForm;
 
 
 
-    <?= $form->field($model, 'image', [
+    <?= $form->field($model, 'imageFile', [
             'template' =>
                 '
                     <div class="custom-file">

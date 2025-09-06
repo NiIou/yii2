@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "{{%products}}".
@@ -23,6 +24,10 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    /**
+     * @var \yii\web\UploadedFile
+     */
+    public $imageFile;
 
 
     /**
@@ -39,14 +44,15 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'created_at', 'updated_at', 'image'], 'required'],
-            [['description', 'image', 'created_by', 'updated_by'], 'default', 'value' => null],
-            [['status'], 'default', 'value' => 1],
+            [['name', 'price', 'imageFile'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
+            [['imageFile'], 'image', 'extensions' => 'png, jpg, jpeg, webp', 'maxSize' => 1024 * 1024 * 5],
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['image'], 'string', 'max' => 2048],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -60,6 +66,7 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Name',
             'description' => 'Description',
             'image' => 'Product Image',
+            'imageFile' => 'Product Image',
             'price' => 'Price',
             'status' => 'Published',
             'created_at' => 'Created At',
@@ -97,5 +104,12 @@ class Product extends \yii\db\ActiveRecord
     {
         return new \common\models\query\ProductQuery(get_called_class());
     }
-
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        echo '<pre>';
+        var_dump($this->imageFile);
+        echo '</pre>';
+        exit;
+        return parent::save($runValidation, $attributeNames);
+    }
 }
